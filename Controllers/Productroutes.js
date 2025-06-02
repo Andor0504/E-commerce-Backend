@@ -84,7 +84,7 @@ ProductRouter.post("/create-product",requireSignIn,isAdmin, formidable(), async 
           return res.status(400).send({ error: "Category is Required" });
         case !quantity:
           return res.status(400).send({ error: "Quantity is Required" });
-        case photo && photo.size > 1000000:
+        case photo && photo.size > 50000000:
           return res
             .status(400)
             .send({ error: "Photo is Required and should be less than 1MB" });
@@ -136,7 +136,7 @@ ProductRouter.put("/update-product/:pid", requireSignIn, isAdmin,formidable(),  
         return res.status(400).send({ error: "Category is Required" });
       case !quantity:
         return res.status(400).send({ error: "Quantity is Required" });
-      case photo && photo.size > 5000000:
+      case photo && photo.size > 50000000:
         return res
           .status(400)
           .send({ error: "Photo should be less than 5MB" });
